@@ -1,7 +1,12 @@
 # wname
 
+[![CI](https://github.com/pahlisch/wname/actions/workflows/ci.yml/badge.svg)](https://github.com/pahlisch/wname/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 Put a large, colored name band on a Hyprland window, so you can tell your
 five terminals apart at a glance.
+
+![Four terminals, each with a colored name band along its top edge](docs/screenshot.png)
 
 ```sh
 wname -n "Blog project"          # name the window this runs in
@@ -24,8 +29,10 @@ You need Hyprland, GTK 4.12 or later, and
 # Arch
 sudo pacman -S gtk4 gtk4-layer-shell rust
 
-cargo install --path .           # installs to ~/.cargo/bin/wname
+cargo install --git https://github.com/pahlisch/wname   # installs to ~/.cargo/bin/wname
 ```
+
+Or from a clone: `cargo install --path .`
 
 ## Usage
 
@@ -122,6 +129,17 @@ hides.
 
 Bands survive a daemon restart. State lives in
 `$XDG_RUNTIME_DIR/wname/<instance>/`, one directory per Hyprland instance.
+
+## Limitations
+
+* The band covers the top 24 px of the window's content, usually a
+  terminal's first line. It is drawn over the window, not added to it.
+* The font (JetBrains Mono Nerd Font, falling back to monospace) and size
+  are fixed in the source.
+* It works with Hyprland only. It relies on Hyprland's IPC for window
+  positions and workspaces.
+* Stacking order is an approximation (see above). A floating window that
+  focus has not raised may be treated as covered or uncovered wrongly.
 
 ## Troubleshooting
 

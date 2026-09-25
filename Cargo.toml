@@ -5,6 +5,7 @@ edition = "2024"
 description = "Put a large, colored name band on a Hyprland window"
 license = "MIT"
 readme = "README.md"
+repository = "https://github.com/pahlisch/wname"
 keywords = ["hyprland", "wayland", "window", "label", "layer-shell"]
 categories = ["command-line-utilities", "gui"]
 
